@@ -12,5 +12,7 @@ RUN npm run build
 FROM nginx:1.21.3-alpine
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
+COPY . /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/build .
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
