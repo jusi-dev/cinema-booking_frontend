@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -23,7 +23,7 @@ const Movie = () => {
   return (
     <>
       <div className='flex flex-row w-full py-2 items-center bg-blue-800 bg-gradient-to-b from-blue-900 to-[#001455] border-b'>
-        <img className='w-16 ml-4 mr-auto' src={logo} alt="" />
+        <Link to={'/'} className='mr-auto'><img className='w-16 ml-4 mr-auto' src={logo} alt="" /></Link>
         <ul className='flex flex-row mr-6 gap-x-6 justify-center'>
           <li className='text-white text-center font-bold text-xl cursor-pointer'>Home</li>
           <li className='text-white text-center font-bold text-xl cursor-pointer'>Movies</li>
@@ -34,8 +34,8 @@ const Movie = () => {
       <div className='flex flex-col w-full h-[50vh] overflow-y-hidden'>
         <div className='relative flex flex-col h-full w-full'>
           <img src={`https://picsum.photos/seed/${movies[id].title}/1920/500`} alt='Movie 1' className='absolute h-full w-full'/>
-          <div className='bg-black/75 w-full h-full z-10 flex flex-col justify-center pl-14'>
-            <div className='flex flex-row items-center gap-x-4'>
+          <div className='bg-black/75 w-full h-full z-10 flex flex-col justify-center px-4 lg:pl-14'>
+            <div className='flex flex-col text-center lg:text-left lg:flex-row items-center gap-x-4 gap-y-4'>
               <img src={`https://picsum.photos/seed/${movies[id].title}/200/300`} alt="" className='rounded-lg border-2'/>
               <div className='flex flex-col'>
                 <p className='text-white text-3xl font-bold font-Roboto'>{movies[id].title}</p>
@@ -46,7 +46,7 @@ const Movie = () => {
         </div>
       </div>
 
-      <div className='flex flex-col px-64 my-10'>
+      <div className='flex flex-col px-4 lg:px-64 my-10'>
         <BackButton size={36}/>
         <div className='mt-4 font-Roboto'>
           <div>

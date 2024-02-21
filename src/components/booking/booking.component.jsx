@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -19,7 +19,6 @@ const Booking = () => {
     const dispatch = useDispatch();
 
     const [selectedSeats, setSelectedSeats] = useState([]);
-    const [seatsDivWidth, setSeatsDivWidth] = useState();
     
     const seatsDiv = useRef(null)
 
@@ -37,7 +36,7 @@ const Booking = () => {
     };
 
     const sendSeatReservation = () => {
-      fetch('http://localhost:4040/bookSeats', {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/bookSeats`, {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -56,13 +55,9 @@ const Booking = () => {
     const addTicketsToCart = () => {
       dispatch(setTickets(selectedSeats))
       dispatch(setMovieID(id))
-      localStorage.setItem('bookingTime', parseInt(Date.now()) + 60000)
+      localStorage.setItem('bookingTime', parseInt(Date.now()) + 600000)
       sendSeatReservation()
     }
-
-    useEffect(() => {
-      setSeatsDivWidth(seatsDiv.current ? seatsDiv.current.offsetWidth : 0)
-    },[seatsDiv])
 
     return (
         <>

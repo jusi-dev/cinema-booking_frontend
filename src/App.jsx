@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from 'react-redux';
@@ -22,7 +21,7 @@ const App = () => {
   const [firstLoad, setFirstLoad] = useState(true);
 
   const fetchMovies = async () => {
-    fetch('http://localhost:4040/getMovies', {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/getMovies`, {
         method: 'GET',
         mode: 'cors',
         headers: {

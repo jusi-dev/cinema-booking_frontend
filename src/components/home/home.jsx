@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import logo from '../../assets/logo.webp'
-import heroImg from '../../assets/hero.jpg'
 import heroVid from '../../assets/hero.mp4'
 
 
 const Home = () => {
+
 
   const movies = useSelector(
     (state) => state.movies.movies
@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <>
       <div className='flex flex-row w-full py-2 items-center bg-blue-800 bg-gradient-to-b from-blue-900 to-[#001455] border-b'>
-        <img className='w-16 ml-4 mr-auto' src={logo} alt="" />
+        <Link to={'/'} className='mr-auto'><img className='w-16 ml-4' src={logo} alt="logo" /></Link>
         <ul className='flex flex-row mr-6 gap-x-6 justify-center'>
           <li className='text-white text-center font-bold text-xl cursor-pointer'>Home</li>
           <li className='text-white text-center font-bold text-xl cursor-pointer'>Movies</li>
