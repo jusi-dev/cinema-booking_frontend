@@ -97,7 +97,7 @@ const BuyTickets = () => {
 
             requestBody.ticketClasses = requestBody.ticketClasses.filter(item => item.quantity > 0);
 
-            fetch(`${process.env.REACT_APP_BACKEND_URL}/create-checkout-session`, {
+            fetch(`/api/create-checkout-session`, {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
@@ -117,7 +117,7 @@ const BuyTickets = () => {
     }
 
     const cancelSeatReservation = () => {
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/canelReservation`, {
+        fetch(`/api/canelReservation`, {
           method: 'POST',
           mode: 'cors',
           headers: {

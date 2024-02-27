@@ -21,7 +21,7 @@ const App = () => {
   const [firstLoad, setFirstLoad] = useState(true);
 
   const fetchMovies = async () => {
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/getMovies`, {
+    fetch(`/api/getMovies`, {
         method: 'GET',
         mode: 'cors',
         headers: {

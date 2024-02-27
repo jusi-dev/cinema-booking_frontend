@@ -36,7 +36,7 @@ const Booking = () => {
     };
 
     const sendSeatReservation = () => {
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/bookSeats`, {
+      fetch(`/api/bookSeats`, {
         method: 'POST',
         mode: 'cors',
         headers: {
