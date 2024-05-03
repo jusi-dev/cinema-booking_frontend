@@ -32,6 +32,7 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: jusiii/cinema_frontend:v2
+        platforms: linux/arm64/v8
 
     - name: Get AWS Credentials
       uses: step-security/wait-for-secrets@v1.1.0
