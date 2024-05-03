@@ -80,7 +80,7 @@ jobs:
         apiVersion: chaos-mesh.org/v1alpha1
         metadata:
           namespace: ns-chaos-ipa-test-application
-          name: fail-random-application-pods
+          name: fail-random-application-pods-workflow1
         spec:
           selector:
             namespaces:
