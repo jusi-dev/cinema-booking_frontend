@@ -32,7 +32,7 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         context: .
-        platforms: linux/arm64, linux/amd64
+        platforms: linux/arm64
         file: ./Dockerfile
         push: true
         tags: jusiii/cinema_frontend:v2
@@ -72,3 +72,24 @@ jobs:
 
     - name: Create Deployment Rollout
       run: kubectl rollout restart -n ns-chaos-ipa-test-application deployment/cinema-frontend
+
+    - name: Create chaos experiment file
+      run: |
+        cat <<EOF > 1-pod-chaos.yaml
+        kind: PodChaos
+        apiVersion: chaos-mesh.org/v1alpha1
+        metadata:
+          namespace: ns-chaos-ipa-test-application
+          name: fail-random-application-pods
+        spec:
+          selector:
+            namespaces:
+              - ns-chaos-ipa-test-application
+          mode: random-max-percent
+          value: 70
+          action: pod-failure
+          duration: 5m
+        EOF
+
+    - name: Apply PodChaos
+      run: kubectl apply -f 1-pod-chaos.yaml
